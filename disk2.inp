@@ -1,0 +1,94 @@
+The intent is to calculate the neutron flux of the Ni-20Cr alloy disk
+c      -----------------------------------------------------------------
+c      GAL
+c      -----------------------------------------------------------------
+c      rev.05.December.2024
+c      -----------------------------------------------------------------
+c
+c      ------------------------- MODEL NOTES ---------------------------
+c
+c  
+c      The origin is 000.
+c      
+c      ----------------------- END MODEL NOTES -------------------------
+c
+c      -----------------------------------------------------------------
+c
+c      ------------------------- START CARDS ---------------------------
+c
+c
+c	   ----------
+c	   cell cards 
+c      ----------
+c
+c 	   ---
+100	   1 -8.49	 -13 14 -15		imp:n=1		$Ni-20Cr disk
+c      ---
+c 
+c      ---
+150    0         13:-14:15  	imp:n=0		$void outside disk 
+c      ---
+c 
+c      ----------
+c 	   end cell cards 
+c 	   ----------
+
+c      ----------
+c      surface cards
+c      ----------
+c 
+c      ---
+c 	   geometry 
+c      ---
+13	   CZ  1.4											$radius of Ni-20Cr disk
+c	   ---
+14	   PZ  0.00											$Bottom of disk
+c      ---
+15	   PZ  0.003										$Top of disk
+c
+c	   ---
+c 
+c      ---
+c      end source geometry
+c      --- 
+
+c      ----------
+c      data cards 
+c      ----------
+MODE   n
+fc4    1 N 3.0 0 0 0 0  
+c      ---
+c      end physics
+c      --- 
+c 		
+c      ---
+c      ---Disk source perpendicular to z-axis uniformly emitting
+c      3.0-MeV neutrons monodirectionally in the +ve z-direction
+c
+SDEF   POS=0 0 0.00001 AXS=0 0 1 EXT=1 RAD=d1 PAR=1 ERG=3.0
+       VEC=0 0 1 DIR=1
+SI1	   0	0.25 $ radial sampling range: 0 to Rmax (=0.25cm)
+SP1	   -21 1 	 $ radial sampling weighting: r^1 for disk 	
+c      ---
+c 
+c      ---
+c      end source 
+c      ---
+c      
+c 	   ---
+c      materials
+c      ---
+c      
+c      ---
+c      Ni-20Cr
+M1     28000.50c 0.8
+	   24000.50c 0.2 
+c      ---
+c      
+c      --- 
+c      end materials 
+c      ---
+c 
+c      --------- END CARDS -------------
+c 
+c      -----------------------------------------------------------------
